@@ -7,9 +7,7 @@ public class Home extends JFrame {
     public Home() {
     	setIconImage(Toolkit.getDefaultToolkit().getImage(Home.class.getResource("/images/icon.png")));
         setTitle("메인 화면");
-        setSize(700, 500);
-
-        
+        setSize(800, 500);
 
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); 
         setLocationRelativeTo(null); 
@@ -17,7 +15,7 @@ public class Home extends JFrame {
         
         JLabel lblNewLabel = new JLabel("홈화면 (미구현)");
         lblNewLabel.setFont(new Font("돋움", Font.PLAIN, 88));
-        lblNewLabel.setBounds(38, 174, 732, 124);
+        lblNewLabel.setBounds(88, 183, 732, 124);
         getContentPane().add(lblNewLabel);
     }
 
