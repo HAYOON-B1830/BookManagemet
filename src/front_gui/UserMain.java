@@ -2,6 +2,8 @@ package front_gui;
 
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -11,8 +13,6 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 public class UserMain extends JFrame {
-	private JTextField textField;
-
 	public UserMain() {
 		super("사용자 메인화면");
 
@@ -24,7 +24,7 @@ public class UserMain extends JFrame {
 
 		/////////////////////////////////////////////////////////////////
 
-		textField = new JTextField();
+		JTextField textField = new JTextField();
 		textField.setFont(new Font("굴림", Font.PLAIN, 15));
 		textField.setBounds(23, 32, 444, 40);
 		getContentPane().add(textField);
@@ -39,6 +39,14 @@ public class UserMain extends JFrame {
 		storebtn.setFont(new Font("굴림", Font.PLAIN, 15));
 		storebtn.setBounds(626, 32, 135, 40);
 		getContentPane().add(storebtn);
+
+		searchbtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				new BookList();
+			}
+		});
+
+		//////////////////////////////////////////////////////////////////////
 
 		JLabel petimgLabel = new JLabel("펫이미지 자리");
 		petimgLabel.setFont(new Font("굴림", Font.PLAIN, 15));
