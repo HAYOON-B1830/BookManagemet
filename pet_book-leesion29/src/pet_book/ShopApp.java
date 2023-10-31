@@ -79,20 +79,20 @@ public class ShopApp {
 		sframe.setVisible(true);
 		sframe.setResizable(false);
 		
-		JPanel panel = new JPanel();
-		panel.setBounds(12, 68, 490, 643);
-		sframe.getContentPane().add(panel);
-		panel.setLayout(null);
+		JPanel PanelShop = new JPanel();
+		PanelShop.setBounds(12, 68, 490, 643);
+		sframe.getContentPane().add(PanelShop);
+		PanelShop.setLayout(null);
 		
 		JScrollBar scrollBar = new JScrollBar();
 		scrollBar.setBounds(473, 0, 17, 406);
-		panel.add(scrollBar);
+		PanelShop.add(scrollBar);
 		
 		//홈버튼
-        JButton btnNewButton = new JButton("Home");
-        btnNewButton.setFont(new Font("돋움", Font.PLAIN, 12));
-        btnNewButton.setToolTipText("누르면 홈으로 돌아갑니다");
-        btnNewButton.addActionListener(new ActionListener() {
+        JButton BtnHome = new JButton("Home");
+        BtnHome.setFont(new Font("돋움", Font.PLAIN, 12));
+        BtnHome.setToolTipText("누르면 홈으로 돌아갑니다");
+        BtnHome.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 sframe.setVisible(false);
                 Home.createAndShowGUI();
@@ -100,255 +100,130 @@ public class ShopApp {
         });
 
         
-        btnNewButton.setBounds(667, 10, 91, 23);
-        sframe.getContentPane().add(btnNewButton);
+        BtnHome.setBounds(667, 10, 91, 23);
+        sframe.getContentPane().add(BtnHome);
 
         //상품 이미지 표시
 		JButton btn_f1 = new JButton("\r\n");
 		btn_f1.setIcon(new ImageIcon(ShopApp.class.getResource("/images/food01_r.png")));
 		btn_f1.setBounds(23, 10, 179, 144);
-		panel.add(btn_f1);
+		PanelShop.add(btn_f1);
 		
 		JButton btn_f2 = new JButton("");
 		btn_f2.setIcon(new ImageIcon(ShopApp.class.getResource("/images/food02_r.png")));
 		btn_f2.setBounds(273, 10, 179, 144);
-		panel.add(btn_f2);
+		PanelShop.add(btn_f2);
 		
 		JButton btn_f3 = new JButton("");
 		btn_f3.setIcon(new ImageIcon(ShopApp.class.getResource("/images/food03_r.png")));
 		btn_f3.setBounds(23, 207, 179, 144);
-		panel.add(btn_f3);
+		PanelShop.add(btn_f3);
 		
 		JButton btn_f4 = new JButton("");
 		btn_f4.setIcon(new ImageIcon(ShopApp.class.getResource("/images/food04_r.png")));
 		btn_f4.setBounds(273, 207, 179, 144);
-		panel.add(btn_f4);
+		PanelShop.add(btn_f4);
 		
 		JButton btn_t2 = new JButton("");
 		btn_t2.setIcon(new ImageIcon(ShopApp.class.getResource("/images/toy02_r.png")));
 		btn_t2.setBounds(273, 405, 179, 144);
-		panel.add(btn_t2);
+		PanelShop.add(btn_t2);
 		
 		JButton btn_t1 = new JButton("");
 		btn_t1.setIcon(new ImageIcon(ShopApp.class.getResource("/images/toy01_r.png")));
 		btn_t1.setBounds(23, 405, 179, 144);
-		panel.add(btn_t1);
+		PanelShop.add(btn_t1);
 		
 		
-		//상품 가격 표시
+		//상품 가격 표시 및 구입
 		JButton btn_price_1 = new JButton("100");
 		btn_price_1.setBounds(67, 164, 91, 23);
-		panel.add(btn_price_1);
+		PanelShop.add(btn_price_1);
 		
 		JButton btn_price_2 = new JButton("100");
 		btn_price_2.setBounds(318, 164, 91, 23);
-		panel.add(btn_price_2);
+		PanelShop.add(btn_price_2);
 
 		JButton btn_price_3 = new JButton("100");
 		btn_price_3.setBounds(67, 361, 91, 23);
-		panel.add(btn_price_3);
+		PanelShop.add(btn_price_3);
 		
 		JButton btn_price_4 = new JButton("100");
 		btn_price_4.setBounds(318, 361, 91, 23);
-		panel.add(btn_price_4);
+		PanelShop.add(btn_price_4);
 		
 		JButton btn_price_5 = new JButton("100");
 		btn_price_5.setBounds(67, 559, 91, 23);
-		panel.add(btn_price_5);
+		PanelShop.add(btn_price_5);
 		
 		JButton btn_price_6 = new JButton("100");
 		btn_price_6.setBounds(318, 559, 91, 23);
-		panel.add(btn_price_6);
+		PanelShop.add(btn_price_6);
 		
-		//포인트로 아이템 구입 
-		btn_price_1.addActionListener(new ActionListener() { 
-	        
-
-			public void actionPerformed(ActionEvent e) {
-	        	
-				if (Point >= 100){
-					JOptionPane.showMessageDialog(null, "구매 완료!");
-					Price = 100;
-					Point -= 100;
-					Energy += 100;
-					
-					UpdateData(Point, Energy);
-					Label_P2.setText(String.valueOf(Point));
-					UpdateData2(Price);
-					
-				}
-				else {
-					JOptionPane.showMessageDialog(null, "포인트가 부족합니다!");
-				}
-	        	
-	        }
-	    });
-		
-		btn_price_2.addActionListener(new ActionListener() { 
-	        public void actionPerformed(ActionEvent e) {
-	        	
-				if (Point >= 100){
-					JOptionPane.showMessageDialog(null, "구매 완료!");
-					Price = 100;
-					Point -= 100;
-					Energy += 100;
-					
-					UpdateData(Point, Energy);
-					Label_P2.setText(String.valueOf(Point));
-					UpdateData2(Price);
-					
-					
-				}
-				else {
-					JOptionPane.showMessageDialog(null, "포인트가 부족합니다!");
-				}
-	        	
-	        }
-	    });
-		
-		btn_price_3.addActionListener(new ActionListener() { 
-	        public void actionPerformed(ActionEvent e) {
-	        	
-				if (Point >= 100){
-					JOptionPane.showMessageDialog(null, "구매 완료!");
-					Price = 100;
-					Point -= 100;
-					Energy += 100;
-					
-					UpdateData(Point, Energy);
-					Label_P2.setText(String.valueOf(Point));
-					UpdateData2(Price);
-					
-					
-				}
-				else {
-					JOptionPane.showMessageDialog(null, "포인트가 부족합니다!");
-				}
-	        	
-	        }
-	    });
-		
-		btn_price_4.addActionListener(new ActionListener() { 
-	        public void actionPerformed(ActionEvent e) {
-	        	
-				if (Point >= 100){
-					Price = 100;
-					Point -= 100;
-					Energy += 100;
-					
-					UpdateData(Point, Energy);
-					Label_P2.setText(String.valueOf(Point));
-					UpdateData2(Price);
-					
-					
-				}
-				else {
-					JOptionPane.showMessageDialog(null, "포인트가 부족합니다!");
-				}
-	        	
-	        }
-	    });
-		
-		btn_price_5.addActionListener(new ActionListener() { 
-	        public void actionPerformed(ActionEvent e) {
-	        	
-				if (Point >= 100){
-					Price = 100;
-					Point -= 100;
-					Energy += 100;
-					
-					UpdateData(Point, Energy);
-					Label_P2.setText(String.valueOf(Point));
-					UpdateData2(Price);
-					
-					
-				}
-				else {
-					JOptionPane.showMessageDialog(null, "포인트가 부족합니다!");
-				}
-	        	
-	        }
-	    });
-		
-		btn_price_6.addActionListener(new ActionListener() { 
-	        public void actionPerformed(ActionEvent e) {
-	        	
-				if (Point >= 100){
-					JOptionPane.showMessageDialog(null, "구매 완료!");
-					Price = 100;
-					Point -= 100;
-					Energy += 100;
-					
-					UpdateData(Point, Energy);
-					Label_P2.setText(String.valueOf(Point));
-					UpdateData2(Price);
-					
-					
-				}
-				else {
-					JOptionPane.showMessageDialog(null, "포인트가 부족합니다!");
-				}
-	        	
-	        }
-	    });
+		btn_price_1.addActionListener(BuyItem);
+		btn_price_2.addActionListener(BuyItem);
+		btn_price_3.addActionListener(BuyItem);
+		btn_price_4.addActionListener(BuyItem);
+		btn_price_5.addActionListener(BuyItem);
+		btn_price_6.addActionListener(BuyItem);
 		
 		
 		
 		//상점 텍스트들
-		JButton btnNewButton_1 = new JButton("포인트 이력");
-		btnNewButton_1.setFont(new Font("돋움", Font.PLAIN, 12));
-	    btnNewButton_1.addActionListener(new ActionListener() {
+		JButton BtnPointdata = new JButton("포인트 이력");
+		BtnPointdata.setFont(new Font("돋움", Font.PLAIN, 12));
+	    BtnPointdata.addActionListener(new ActionListener() {
 	        public void actionPerformed(ActionEvent e) {
 	        	sframe.setVisible(false);
 	        	PointApp pointApp = new PointApp();
 	        }
 	    });
-		btnNewButton_1.setBounds(526, 10, 101, 23);
-		sframe.getContentPane().add(btnNewButton_1);
+		BtnPointdata.setBounds(526, 10, 101, 23);
+		sframe.getContentPane().add(BtnPointdata);
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(514, 47, 260, 406);
-		sframe.getContentPane().add(panel_1);
-		panel_1.setLayout(null);
+		JPanel PanelUser = new JPanel();
+		PanelUser.setBounds(514, 47, 260, 406);
+		sframe.getContentPane().add(PanelUser);
+		PanelUser.setLayout(null);
 		
 		Label_N2 = new JLabel("홍길동님의");
 		Label_N2.setHorizontalAlignment(SwingConstants.CENTER);
 		Label_N2.setFont(new Font("맑은 고딕", Font.PLAIN, 30));
 		Label_N2.setBounds(0, 267, 260, 40);
-		panel_1.add(Label_N2);
+		PanelUser.add(Label_N2);
 		
 		JLabel lblNewLabel_1_1 = new JLabel("포인트");
 		lblNewLabel_1_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1_1.setFont(new Font("맑은 고딕", Font.PLAIN, 27));
 		lblNewLabel_1_1.setBounds(0, 304, 260, 47);
-		panel_1.add(lblNewLabel_1_1);
+		PanelUser.add(lblNewLabel_1_1);
 		
 		Label_P2 = new JLabel("2023");
 		Label_P2.setFont(new Font("돋움", Font.BOLD, 20));
 		Label_P2.setHorizontalAlignment(SwingConstants.CENTER);
 		Label_P2.setBounds(46, 350, 181, 58);
-		panel_1.add(Label_P2);
+		PanelUser.add(Label_P2);
 		
-		JLabel lblNewLabel = new JLabel("상점");
-		lblNewLabel.setFont(new Font("맑은 고딕", Font.BOLD, 20));
-		lblNewLabel.setBounds(12, 10, 134, 27);
-		sframe.getContentPane().add(lblNewLabel);
+		JLabel LabelShop = new JLabel("상점");
+		LabelShop.setFont(new Font("맑은 고딕", Font.BOLD, 20));
+		LabelShop.setBounds(12, 10, 134, 27);
+		sframe.getContentPane().add(LabelShop);
 		
 		//프로필 이미지
 		JButton btn_profile = new JButton("");
 		btn_profile.setIcon(new ImageIcon(ShopApp.class.getResource(imagePath)));
 		btn_profile.setBounds(12, 10, 236, 247);
-		panel_1.add(btn_profile);
+		PanelUser.add(btn_profile);
 		
 		
 		//스크롤 관련 코드
-		JScrollPane scrollPane = new JScrollPane(panel);
-		scrollPane.setBounds(12, 47, 490, 406); 
-		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		sframe.getContentPane().add(scrollPane); 
+		JScrollPane ScrollPane = new JScrollPane(PanelShop);
+		ScrollPane.setBounds(12, 47, 490, 406); 
+		ScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		sframe.getContentPane().add(ScrollPane); 
 
 		// panel 크기 조정
-		panel.setPreferredSize(new Dimension(490, 673));
+		PanelShop.setPreferredSize(new Dimension(490, 673));
 		
 		//버튼 설정
 		btn_profile.setContentAreaFilled(false);
@@ -367,7 +242,7 @@ public class ShopApp {
 		btn_t2.setFocusPainted(false); 
     }
 
-       // DB의 데이터를 연동하는 코드 
+       // DB의 데이터를 연동하는 코드들
 		 private void LoadUserData() {
 		        String jdbcUrl = "jdbc:mysql://localhost:3306/petbook_db";
 		        String username = "root";
@@ -455,7 +330,23 @@ public class ShopApp {
 			        e.printStackTrace();
 			    }
 			}
-
-
+		 
+		 //상품 구매 기능 간략화
+		 ActionListener BuyItem = new ActionListener() {
+			    public void actionPerformed(ActionEvent e) {
+			        if (Point >= 100) {
+			            JOptionPane.showMessageDialog(null, "구매 완료!");
+			            Price = 100;
+			            Point -= 100;
+			            Energy += 100;
+			            
+			            UpdateData(Point, Energy);
+			            Label_P2.setText(String.valueOf(Point));
+			            UpdateData2(Price);
+			        } else {
+			            JOptionPane.showMessageDialog(null, "포인트가 부족합니다!");
+			        }
+			    }
+			};
 
 		}

@@ -27,7 +27,7 @@ public class PointApp {
     private JLabel Label_N2;
     private JLabel Label_P2;
     private JLabel DataLabel_1; 
-    private LineBorder bb = new LineBorder(Color.black, 1, true);
+    private LineBorder border = new LineBorder(Color.black, 1, true);
     
     /* 앱 구동 */
     public static void main(String[] args) {
@@ -50,6 +50,7 @@ public class PointApp {
         LoadPointHistory();
     }
 
+    //SQL에서 유저 데이터 로드
     private void LoadUserData() {
         String jdbcUrl = "jdbc:mysql://localhost:3306/petbook_db";
         String username = "root";
@@ -83,6 +84,7 @@ public class PointApp {
         }
     }
 
+    //SQL에서 포인트 이력 로드
     private void LoadPointHistory() {
         String jdbcUrl = "jdbc:mysql://localhost:3306/petbook_db";
         String username = "root";
@@ -92,7 +94,6 @@ public class PointApp {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection connection = DriverManager.getConnection(jdbcUrl, username, password);
 
-            // 기존의 모든 데이터를 가져오는 쿼리를 사용합니다.
             String selectQuery = "SELECT date, point FROM point_table ORDER BY date DESC";
 
             PreparedStatement preparedStatement = connection.prepareStatement(selectQuery);
@@ -104,7 +105,7 @@ public class PointApp {
                 String date = resultSet.getString("date");
                 int point = resultSet.getInt("point");
                 pointHistoryText += date + ": -" + point + " 포인트<br>";
-                DataLabel_1.setBorder(bb);
+                DataLabel_1.setBorder(border);
                 count++;
             }
             pointHistoryText += "</html>";
@@ -119,6 +120,7 @@ public class PointApp {
         }
     }
 
+    
     /* GUI 구성 */
     private void initialize() {
         // 화질 저하 방지 코드
@@ -134,10 +136,10 @@ public class PointApp {
         pframe.setVisible(true);
         pframe.setResizable(false);
 
-        JButton btnNewButton = new JButton("Home");
-        btnNewButton.setFont(new Font("돋움", Font.PLAIN, 12));
-        btnNewButton.setToolTipText("누르면 홈으로 돌아갑니다");
-        btnNewButton.addActionListener(new ActionListener() {
+        JButton BtnHome = new JButton("Home");
+        BtnHome.setFont(new Font("돋움", Font.PLAIN, 12));
+        BtnHome.setToolTipText("누르면 홈으로 돌아갑니다");
+        BtnHome.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // 현재 창을 숨김
                 pframe.setVisible(false);
@@ -146,51 +148,52 @@ public class PointApp {
             }
         });
 
-        btnNewButton.setBounds(667, 10, 91, 23);
-        pframe.getContentPane().add(btnNewButton);
+        //포인트 이력 GUI
+        BtnHome.setBounds(667, 10, 91, 23);
+        pframe.getContentPane().add(BtnHome);
 
-        JLabel lblNewLabel = new JLabel("포인트");
-        lblNewLabel.setFont(new Font("맑은 고딕", Font.BOLD, 20));
-        lblNewLabel.setBounds(12, 10, 134, 27);
-        pframe.getContentPane().add(lblNewLabel);
+        JLabel LabelPoint = new JLabel("포인트");
+        LabelPoint.setFont(new Font("맑은 고딕", Font.BOLD, 20));
+        LabelPoint.setBounds(12, 10, 134, 27);
+        pframe.getContentPane().add(LabelPoint);
 
-        JPanel view_panel = new JPanel();
-        view_panel.setBounds(12, 47, 490, 298);
-        pframe.getContentPane().add(view_panel);
-        view_panel.setLayout(null);
+        JPanel PanelData = new JPanel();
+        PanelData.setBounds(12, 47, 490, 298);
+        pframe.getContentPane().add(PanelData);
+        PanelData.setLayout(null);
 
-        DataLabel_1 = new JLabel("N"); // 수정된 부분
+        DataLabel_1 = new JLabel("N"); 
         DataLabel_1.setVerticalAlignment(SwingConstants.TOP);
         DataLabel_1.setHorizontalAlignment(SwingConstants.LEFT);
         DataLabel_1.setFont(new Font("맑은 고딕", Font.PLAIN, 25));
         DataLabel_1.setBounds(0, 0, 490, 282);
-        view_panel.add(DataLabel_1); // 수정된 부분
+        PanelData.add(DataLabel_1); 
         
         JSeparator separator_1 = new JSeparator();
         separator_1.setBounds(0, 404, 490, 2);
-        view_panel.add(separator_1);
+        PanelData.add(separator_1);
 
-        JPanel profile_panel = new JPanel();
-        profile_panel.setBounds(514, 47, 260, 406);
-        pframe.getContentPane().add(profile_panel);
-        profile_panel.setLayout(null);
+        JPanel PannelProfile = new JPanel();
+        PannelProfile.setBounds(514, 47, 260, 406);
+        pframe.getContentPane().add(PannelProfile);
+        PannelProfile.setLayout(null);
 
         Label_N2 = new JLabel("홍길동님의");
         Label_N2.setHorizontalAlignment(SwingConstants.CENTER);
         Label_N2.setFont(new Font("맑은 고딕", Font.PLAIN, 30));
         Label_N2.setBounds(0, 267, 260, 40);
-        profile_panel.add(Label_N2);
+        PannelProfile.add(Label_N2);
 
         Label_P2 = new JLabel("2023");
         Label_P2.setFont(new Font("돋움", Font.BOLD, 20));
         Label_P2.setHorizontalAlignment(SwingConstants.CENTER);
         Label_P2.setBounds(46, 350, 181, 58);
-        profile_panel.add(Label_P2);
+        PannelProfile.add(Label_P2);
 
         JButton btn_profile = new JButton("");
         btn_profile.setIcon(new ImageIcon(ShopApp.class.getResource("/images/rabbit03_r.png")));
         btn_profile.setBounds(12, 10, 236, 247);
-        profile_panel.add(btn_profile);
+        PannelProfile.add(btn_profile);
 
         btn_profile.setContentAreaFilled(false);
         btn_profile.setFocusPainted(false);
@@ -199,12 +202,24 @@ public class PointApp {
         lblNewLabel_1_1.setHorizontalAlignment(SwingConstants.CENTER);
         lblNewLabel_1_1.setFont(new Font("맑은 고딕", Font.PLAIN, 27));
         lblNewLabel_1_1.setBounds(0, 304, 260, 47);
-        profile_panel.add(lblNewLabel_1_1);
+        PannelProfile.add(lblNewLabel_1_1);
         
-        JLabel lblNewLabel_1 = new JLabel("※ 포인트 이력은 최대 8건까지 볼 수 있습니다");
-        lblNewLabel_1.setFont(new Font("돋움", Font.PLAIN, 17));
-        lblNewLabel_1.setBounds(12, 355, 490, 25);
-        pframe.getContentPane().add(lblNewLabel_1);
+        JLabel LabelMsg = new JLabel("※ 포인트 이력은 최대 8건까지 볼 수 있습니다");
+        LabelMsg.setFont(new Font("돋움", Font.PLAIN, 17));
+        LabelMsg.setBounds(12, 355, 490, 25);
+        pframe.getContentPane().add(LabelMsg);
+        
+		JButton BtnShop = new JButton("상점");
+		BtnShop.setFont(new Font("돋움", Font.PLAIN, 12));
+	    BtnShop.addActionListener(new ActionListener() {
+	        public void actionPerformed(ActionEvent e) {
+	        	pframe.setVisible(false);
+	        	ShopApp shopApp = new ShopApp();
+	        }
+	    });
+		BtnShop.setBounds(526, 10, 101, 23);
+		pframe.getContentPane().add(BtnShop);
+
         
         
 

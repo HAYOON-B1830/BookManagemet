@@ -12,12 +12,12 @@ import java.sql.Connection;
 
 public class PetApp {
 
-    private JFrame frame;
-    private JLabel Label_N2;
-    private JLabel Label_P2;
+    public JFrame frame;
+    private JLabel LabelName2;
+    private JLabel LabelPoint2;
     private int Energy;
-    private JButton btn_pet;
-    private String imagePath = "/images/dog01_s.png"; // 기본 이미지 경로
+    private JButton BtnPet;
+    private String imagePath = "/images/dog01_s.png"; 
 
     /*앱 구동*/
     public static void main(String[] args) {
@@ -61,11 +61,11 @@ public class PetApp {
                 int point = resultSet.getInt("point");
                 Energy = resultSet.getInt("pet_energy");
 
-                Label_N2.setText(memberName);
-                Label_P2.setText(String.valueOf(point));
+                LabelName2.setText(memberName);
+                LabelPoint2.setText(String.valueOf(point));
             }
 
-            if (btn_pet != null) {
+            if (BtnPet != null) {
                 if (Energy >= 1000) {
                     imagePath = "/images/dog03_r.png";
                 } else if (Energy >= 300) {
@@ -75,8 +75,8 @@ public class PetApp {
                 }
             }
 
-            if (btn_pet != null) {
-                btn_pet.setIcon(new ImageIcon(PetApp.class.getResource(imagePath)));
+            if (BtnPet != null) {
+                BtnPet.setIcon(new ImageIcon(PetApp.class.getResource(imagePath)));
             }
 
             connection.close();
@@ -100,15 +100,15 @@ public class PetApp {
         frame.getContentPane().setLayout(null);
         frame.setResizable(false);
 
-        JPanel panel = new JPanel();
-        panel.setBounds(0, 0, 786, 463);
-        frame.getContentPane().add(panel);
-        panel.setLayout(null);
+        JPanel PanelAll = new JPanel();
+        PanelAll.setBounds(0, 0, 786, 463);
+        frame.getContentPane().add(PanelAll);
+        PanelAll.setLayout(null);
 
-        JButton btnNewButton = new JButton("Home");
-        btnNewButton.setFont(new Font("맑은 고딕", Font.PLAIN, 20));
-        btnNewButton.setToolTipText("누르면 홈으로 돌아갑니다");
-        btnNewButton.addActionListener(new ActionListener() {
+        JButton BtnHome = new JButton("Home");
+        BtnHome.setFont(new Font("맑은 고딕", Font.PLAIN, 20));
+        BtnHome.setToolTipText("누르면 홈으로 돌아갑니다");
+        BtnHome.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // 현재 창을 숨김
                 frame.setVisible(false);
@@ -117,107 +117,107 @@ public class PetApp {
             }
         });
 
-        btnNewButton.setBounds(650, 10, 124, 44);
-        panel.add(btnNewButton);
+        BtnHome.setBounds(650, 10, 124, 44);
+        PanelAll.add(BtnHome);
 
         String name = "이름";
 
-        JPanel panel_pet = new JPanel();
-        panel_pet.setToolTipText("현재 펫 이미지입니다");
-        panel_pet.setBounds(45, 22, 255, 255);
-        panel.add(panel_pet);
-        panel_pet.setLayout(null);
+        JPanel Panelpet = new JPanel();
+        Panelpet.setToolTipText("현재 펫 이미지입니다");
+        Panelpet.setBounds(45, 22, 255, 255);
+        PanelAll.add(Panelpet);
+        Panelpet.setLayout(null);
 
-        btn_pet = new JButton("");
-        btn_pet.setBounds(0, 0, 255, 255);
-        panel_pet.add(btn_pet);
-        btn_pet.setBackground(new Color(0, 0, 0));
-        btn_pet.setIcon(new ImageIcon(PetApp.class.getResource(imagePath)));
+        BtnPet = new JButton("");
+        BtnPet.setBounds(0, 0, 255, 255);
+        Panelpet.add(BtnPet);
+        BtnPet.setBackground(new Color(0, 0, 0));
+        BtnPet.setIcon(new ImageIcon(PetApp.class.getResource(imagePath)));
 
-        btn_pet.setContentAreaFilled(false);
-        btn_pet.setFocusPainted(false);
+        BtnPet.setContentAreaFilled(false);
+        BtnPet.setFocusPainted(false);
 
-        JPanel panel_baby = new JPanel();
-        panel_baby.setBounds(45, 300, 142, 139);
-        panel.add(panel_baby);
-        panel_baby.setLayout(null);
+        JPanel PanelBaby = new JPanel();
+        PanelBaby.setBounds(45, 300, 142, 139);
+        PanelAll.add(PanelBaby);
+        PanelBaby.setLayout(null);
 
-        JButton btn_pet1 = new JButton("");
-        btn_pet1.setBounds(0, 0, 142, 139);
-        panel_baby.add(btn_pet1);
-        btn_pet1.setBackground(new Color(0, 0, 0));
-        btn_pet1.setIcon(new ImageIcon(PetApp.class.getResource("/images/dog01_s.png")));
-        btn_pet1.setContentAreaFilled(false);
-        btn_pet1.setFocusPainted(false);
+        JButton Btnbaby = new JButton("");
+        Btnbaby.setBounds(0, 0, 142, 139);
+        PanelBaby.add(Btnbaby);
+        Btnbaby.setBackground(new Color(0, 0, 0));
+        Btnbaby.setIcon(new ImageIcon(PetApp.class.getResource("/images/dog01_s.png")));
+        Btnbaby.setContentAreaFilled(false);
+        Btnbaby.setFocusPainted(false);
 
-        JPanel panel_adult = new JPanel();
-        panel_adult.setBounds(604, 300, 142, 139);
-        panel.add(panel_adult);
-        panel_adult.setLayout(null);
+        JPanel PanelAdult = new JPanel();
+        PanelAdult.setBounds(604, 300, 142, 139);
+        PanelAll.add(PanelAdult);
+        PanelAdult.setLayout(null);
 
-        JButton btn_pet3 = new JButton("");
-        btn_pet3.setBounds(0, 0, 142, 139);
-        panel_adult.add(btn_pet3);
-        btn_pet3.setIcon(new ImageIcon(PetApp.class.getResource("/images/dog03_s.png")));
-        btn_pet3.setFocusPainted(false);
-        btn_pet3.setContentAreaFilled(false);
-        btn_pet3.setBackground(Color.BLACK);
+        JButton BtnAdult = new JButton("");
+        BtnAdult.setBounds(0, 0, 142, 139);
+        PanelAdult.add(BtnAdult);
+        BtnAdult.setIcon(new ImageIcon(PetApp.class.getResource("/images/dog03_s.png")));
+        BtnAdult.setFocusPainted(false);
+        BtnAdult.setContentAreaFilled(false);
+        BtnAdult.setBackground(Color.BLACK);
 
-        JButton btn_arr3 = new JButton("");
-        btn_arr3.setIcon(new ImageIcon(PetApp.class.getResource("/images/Arrow_r.png")));
-        btn_arr3.setBounds(188, 338, 150, 70);
-        panel.add(btn_arr3);
-        btn_arr3.setContentAreaFilled(false);
-        btn_arr3.setBorderPainted(false);
-        btn_arr3.setFocusPainted(false);
+        JButton BtnArr1 = new JButton("");
+        BtnArr1.setIcon(new ImageIcon(PetApp.class.getResource("/images/Arrow_r.png")));
+        BtnArr1.setBounds(188, 338, 150, 70);
+        PanelAll.add(BtnArr1);
+        BtnArr1.setContentAreaFilled(false);
+        BtnArr1.setBorderPainted(false);
+        BtnArr1.setFocusPainted(false);
 
-        JLabel Label_N = new JLabel("이름");
-        Label_N.setFont(new Font("맑은 고딕", Font.PLAIN, 30));
-        Label_N.setBounds(370, 89, 91, 85);
-        panel.add(Label_N);
+        JLabel LabelName = new JLabel("이름");
+        LabelName.setFont(new Font("맑은 고딕", Font.PLAIN, 30));
+        LabelName.setBounds(370, 89, 91, 85);
+        PanelAll.add(LabelName);
 
-        JLabel Label_P = new JLabel("잔여 포인트");
-        Label_P.setFont(new Font("맑은 고딕", Font.PLAIN, 30));
-        Label_P.setBounds(370, 206, 180, 32);
-        panel.add(Label_P);
+        JLabel LabelPoint = new JLabel("잔여 포인트");
+        LabelPoint.setFont(new Font("맑은 고딕", Font.PLAIN, 30));
+        LabelPoint.setBounds(370, 206, 180, 32);
+        PanelAll.add(LabelPoint);
 
-        Label_N2 = new JLabel("홍길동");
-        Label_N2.setFont(new Font("맑은 고딕", Font.PLAIN, 30));
-        Label_N2.setBounds(555, 115, 231, 32);
-        panel.add(Label_N2);
+        LabelName2 = new JLabel("홍길동");
+        LabelName2.setFont(new Font("맑은 고딕", Font.PLAIN, 30));
+        LabelName2.setBounds(555, 115, 231, 32);
+        PanelAll.add(LabelName2);
 
-        Label_P2 = new JLabel("2023");
-        Label_P2.setFont(new Font("맑은 고딕", Font.PLAIN, 30));
-        Label_P2.setBounds(562, 206, 224, 32);
-        panel.add(Label_P2);
+        LabelPoint2 = new JLabel("2023");
+        LabelPoint2.setFont(new Font("맑은 고딕", Font.PLAIN, 30));
+        LabelPoint2.setBounds(562, 206, 224, 32);
+        PanelAll.add(LabelPoint2);
 
-        JPanel panel_youth = new JPanel();
-        panel_youth.setBounds(333, 300, 142, 139);
-        panel.add(panel_youth);
-        panel_youth.setLayout(null);
+        JPanel PanelYouth = new JPanel();
+        PanelYouth.setBounds(333, 300, 142, 139);
+        PanelAll.add(PanelYouth);
+        PanelYouth.setLayout(null);
 
         JButton btn_pet2 = new JButton("");
         btn_pet2.setBounds(0, 0, 142, 139);
-        panel_youth.add(btn_pet2);
+        PanelYouth.add(btn_pet2);
         btn_pet2.setBackground(new Color(0, 0, 0));
         btn_pet2.setIcon(new ImageIcon(PetApp.class.getResource("/images/dog02_s.png")));
         btn_pet2.setContentAreaFilled(false);
         btn_pet2.setFocusPainted(false);
 
-        JButton btn_arr3_1 = new JButton("");
-        btn_arr3_1.setIcon(new ImageIcon(PetApp.class.getResource("/images/Arrow_r.png")));
-        btn_arr3_1.setFocusPainted(false);
-        btn_arr3_1.setContentAreaFilled(false);
-        btn_arr3_1.setBorderPainted(false);
-        btn_arr3_1.setBounds(490, 338, 102, 70);
-        panel.add(btn_arr3_1);
+        JButton BtnArr2 = new JButton("");
+        BtnArr2.setIcon(new ImageIcon(PetApp.class.getResource("/images/Arrow_r.png")));
+        BtnArr2.setFocusPainted(false);
+        BtnArr2.setContentAreaFilled(false);
+        BtnArr2.setBorderPainted(false);
+        BtnArr2.setBounds(490, 338, 102, 70);
+        PanelAll.add(BtnArr2);
 
-        JSeparator separator = new JSeparator();
-        separator.setBounds(357, 158, 371, 2);
-        panel.add(separator);
+        JSeparator Separator = new JSeparator();
+        Separator.setBounds(357, 158, 371, 2);
+        PanelAll.add(Separator);
 
-        JSeparator separator_1 = new JSeparator();
-        separator_1.setBounds(357, 248, 371, 10);
-        panel.add(separator_1);
+        JSeparator Separator2 = new JSeparator();
+        Separator2.setBounds(357, 248, 371, 10);
+        PanelAll.add(Separator2);
     }
 }

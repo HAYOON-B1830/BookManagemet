@@ -28,7 +28,6 @@ CREATE TABLE `member_table` (
   `member_name` varchar(45) NOT NULL,
   `point` int NOT NULL,
   `pet_energy` int NOT NULL,
-  `pet_type` varchar(45) NOT NULL,
   PRIMARY KEY (`member_id`),
   UNIQUE KEY `member_id_UNIQUE` (`member_id`),
   UNIQUE KEY `member_name_UNIQUE` (`member_name`)
@@ -41,33 +40,8 @@ CREATE TABLE `member_table` (
 
 LOCK TABLES `member_table` WRITE;
 /*!40000 ALTER TABLE `member_table` DISABLE KEYS */;
-INSERT INTO `member_table` VALUES ('root','0000','관리자',99999,0,'cat'),('test1234','1234','John Doe',99299,5100,'dog'),('test4321','4321','Jain Doe',8282,0,'rabbit');
+INSERT INTO `member_table` VALUES ('root','0000','관리자',99999,0),('test1234','1234','John Doe',3300,1700),('test4321','4321','Jain Doe',8282,0);
 /*!40000 ALTER TABLE `member_table` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `point_table`
---
-
-DROP TABLE IF EXISTS `point_table`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `point_table` (
-  `num` int NOT NULL AUTO_INCREMENT,
-  `date` date DEFAULT NULL,
-  `point` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`num`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `point_table`
---
-
-LOCK TABLES `point_table` WRITE;
-/*!40000 ALTER TABLE `point_table` DISABLE KEYS */;
-INSERT INTO `point_table` VALUES (1,'2023-10-22','200'),(2,'2023-10-22','100'),(3,'2023-10-22','100'),(4,'2023-10-22','100');
-/*!40000 ALTER TABLE `point_table` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -79,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-10-24 13:32:11
+-- Dump completed on 2023-10-31 12:20:44
